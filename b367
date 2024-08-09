@@ -1,0 +1,13 @@
+t = int(input())   
+for p in range(t):
+  n, m = map(int, input().split())  
+  a, b = [], []       
+  for q in range(n):
+    arr = [int(i) for i in input().split()] 
+    a.append(arr)  
+    b.insert(0,arr[::-1])  
+
+  if b == a:
+    print('go forward')  
+  else:
+    print('keep defending')
