@@ -1,0 +1,8 @@
+i=input()
+a=abs(ord(i[1])-ord(i[0]))
+b=abs(ord(i[2])-ord(i[1]))
+c=abs(ord(i[3])-ord(i[2]))
+d=abs(ord(i[4])-ord(i[3]))
+e=abs(ord(i[5])-ord(i[4]))
+f=abs(ord(i[6])-ord(i[5]))
+print(str(a)+str(b)+str(c)+str(d)+str(e)+str(f))
