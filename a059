@@ -1,0 +1,10 @@
+r=0
+t=int(input())
+for i in range(1,t+1,1):
+  a=int(input())
+  b=int(input())
+  for x in range(1,b,1):
+    if (a-1)<x*x<(b+1):
+      r=r+x*x
+  print("Case "+str(i)+": "+str(r))
+  r=0
