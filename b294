@@ -1,0 +1,7 @@
+r = 0
+t = int(input())
+a = input()
+a = a.split() 
+for i in range(1, t+1):
+    r = r + i * int(a[i-1])
+print(r)
