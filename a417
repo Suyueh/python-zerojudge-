@@ -1,0 +1,41 @@
+test = int(input())        # 有幾個測試矩陣
+for k in range(test):
+  m, s = map(int, input().split())   # m 為矩陣大小、s 為旋轉方向
+  num = m*m       # 根據矩陣大小，算出裡面最大的數字 ( 因為是正方形矩陣就是 m*m )
+  turn = 1        # 預設一開始為 1 ( 水平往右移動 )
+  x, y = 0, 0     # 數字從左上角 (0, 0) 出發
+  x1, y1 = 0, 0   #  起始為左上角 (0, 0)
+  x2, y2 = m - 1, m - 1    # 末端點為右下角 ( m-1, m-1 )
+  output = []     # 最後要輸出的矩陣
+  for i in range(m):
+    output.append([0 for j in range(m)])    # 使用串列生成式，預設將矩陣的每個位置都填上 0
+
+  for i in range(1,num+1):        # 根據旋轉的方向，填入數字
+
+    if s == 1: output[y][x] = i   # 順時針
+    else: output[x][y] = i        # 逆時針
+
+    if i == num: break            # 如果已經填到最後一個數字，終止回圈
+
+    if turn == 1: x = x + 1       # 如果水平往右，x 增加 1
+    if turn == 2: y = y + 1       # 如果垂直往下，y 增加 1
+    if turn == 3: x = x - 1       # 如果水平往左，x 減少 1
+    if turn == 4: y = y - 1       # 如果垂直往上，y 減少 1
+
+    if x == x2 and y == y1 and turn == 1:  # 如果水平往右碰到右上端點
+      turn = 2                             # 改成垂直往下
+      y1 = y1 + 1                          # 起始點的 y 增加 1
+    if x == x2 and y == y2 and turn == 2:  # 如果垂直往下碰到右下端點
+      turn = 3                             # 改成水平往左
+      x2 = x2 - 1                          # 末端點的 x 減少 1
+    if x == x1 and y == y2 and turn == 3:  # 如果水平往左碰到左下端點
+      turn = 4                             # 改成垂直往上
+      y2 = y2 - 1                          # 末端點的 y 減少 1
+    if x == x1 and y == y1 and turn == 4:  # 如果垂直往上碰到左上端點
+      turn = 1                             # 改成水平往右
+      x1 = x1 + 1                          # 起始點的 x 增加 1
+
+  for i in output:
+    for j in i:
+      print(f'{j: 5d}', end='')    # 字串格式化輸出，長度為 5，前方多一個空白
+    print()
