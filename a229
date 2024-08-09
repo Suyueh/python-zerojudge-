@@ -1,0 +1,20 @@
+from sys import stdin
+from itertools import chain
+
+legals = {1: {0b10}}
+
+def parent(N):
+	try:
+		return sorted(legals[N],reverse=True)
+	except KeyError:
+		for i in range(max(legals.keys())+1, N+1):
+			legals[i] = set(chain.from_iterable(((l+4**(i-1))*2, l+2**(2*i-1), l*4+2) for l in legals[i-1])).union(
+				chain.from_iterable((a*4**j+b for a in legals[i-j] for b in legals[j]) for j in range(2, i-1)))
+	return sorted(legals[N],reverse=True)
+
+
+for line in stdin:
+	line=line.strip('\n')
+	if line:
+		N = int(line)
+		print(*(f"{i:b}".translate({49: 40, 48: 41}) for i in  parent(N)), sep='\n', end='\n\n')
