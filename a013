@@ -1,0 +1,37 @@
+def roman_to_int(roman):
+    roman_dict = {
+        'I': 1, 'V': 5, 'X': 10,
+        'L': 50, 'C': 100, 'D': 500, 'M': 1000
+    }
+    num = 0
+    prev_value = 0
+    for symbol in roman:
+        value = roman_dict[symbol]
+        if value > prev_value:
+            num += value - 2 * prev_value
+        else:
+            num += value
+        prev_value = value
+    return num
+def int_to_roman(n):
+    val = [1000, 900, 500, 400, 100, 90, 50, 40, 10, 9, 5, 4, 1]
+    syms = ['M', 'CM', 'D', 'CD', 'C', 'XC', 'L', 'XL', 'X', 'IX', 'V', 'IV', 'I']
+    roman_num = ''
+    for i in range(len(val)):
+        while n >= val[i]:
+            roman_num += syms[i]
+            n -= val[i]
+    return roman_num
+
+
+while True:
+    line = input()
+    if line == '#':
+        break
+    num1, num2 = map(roman_to_int, line.split())
+    diff = abs(num1 - num2)
+    if diff == 0:
+        print("ZERO")
+    else:
+        roman_diff = int_to_roman(diff)
+        print(roman_diff)
