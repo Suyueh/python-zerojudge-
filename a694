@@ -1,0 +1,16 @@
+from sys  import stdin
+from itertools import accumulate
+for s in stdin:
+    n,m=map(int,s.split())
+    arr=[[0]*(n+1)]
+    for _ in range(n):
+        t=[int(x) for x in stdin.readline().split()]
+        t=list(accumulate([0]+t))
+        v=arr[-1]
+        v=[aa+aaa for aa ,aaa in zip(t,v)]
+        arr.append(v)
+        #print(arr)
+    for _ in range(m):
+        y1,x1,y2,x2=map(int,stdin.readline().split())
+        r=arr[y2][x2]-arr[y2][x1-1]-arr[y1-1][x2]+arr[y1-1][x1-1]
+        print(r)
