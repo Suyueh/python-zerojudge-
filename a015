@@ -1,0 +1,12 @@
+while 1:
+    try:
+        x,y = list(map(int,input().split()))
+        end = []
+        for i in range(x):
+            fac = list(map(int,input().split()))
+            end.append(fac)
+        end = zip(*end)
+        for i in end:
+            print(*i)
+    except:
+        break
