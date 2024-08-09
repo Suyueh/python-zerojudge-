@@ -1,0 +1,12 @@
+import datetime
+while True:
+    try:
+        d1 = [int(i) for i in input().split(' ')]
+        d1_day=datetime.datetime(d1[0], d1[1], d1[2])
+
+        d2 = [int(i) for i in input().split(' ')]
+        d2_day=datetime.datetime(d2[0], d2[1], d2[2])
+
+        print(abs((d1_day - d2_day).days))
+    except:
+        break
