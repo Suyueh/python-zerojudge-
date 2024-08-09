@@ -1,0 +1,9 @@
+while True:
+  try:
+    list=[int(x) for x in input().split()]
+    if sum(list[1:])/list[0] >59:
+      print("no")
+    else:
+      print("yes")
+  except EOFError:
+    break
