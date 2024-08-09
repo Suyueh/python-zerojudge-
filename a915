@@ -1,0 +1,15 @@
+s=[]
+
+n=int(input())
+
+for i in range(n):
+
+    t=list(map(int,input().split()))
+
+    s.append(t)
+
+s.sort()
+
+for i in range(n):
+
+    print(s[i][0],s[i][1])
