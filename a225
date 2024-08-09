@@ -1,0 +1,13 @@
+def spliter(nl):
+    a=nl[0][-1]
+    value=[]
+    splited_numbers=[]
+    for item in nl:
+        if item[-1]==a:
+            splited_numbers.append(int(item))
+        else:
+            value.append(splited_numbers)
+            splited_numbers=[int(item)]
+        a=item[-1]
+    value.append(splited_numbers)
+    return value
