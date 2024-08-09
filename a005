@@ -1,0 +1,14 @@
+t = int(input())
+for _ in range(t):
+  line = input()
+  if len(line.split()) == 4:
+    a1, a2, a3, a4 = map(int, line.split())
+    if a2 - a1 == a3 - a2 == a4 - a3:
+      d = a4 - a3
+      a5 = a4 + d
+      print(a1, a2, a3, a4, a5)
+
+    else:
+      r = a4 // a3
+      a5 = a4 * r
+      print(a1, a2, a3, a4, a5)
