@@ -1,0 +1,11 @@
+r=0
+s=int(input())
+if s<11:
+  r=s*6
+elif s<21:
+  r=60+(s-10)*2
+elif s<41:
+  r=60+20+(s-20)*1
+else:
+  r=100
+print(r)
