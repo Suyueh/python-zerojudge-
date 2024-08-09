@@ -1,0 +1,24 @@
+from sys import stdin
+output = ''
+for s in stdin:
+  if s.strip() == '': continue
+  pwd = s.split()
+  dic = {str(k):0 for k in range(10)}
+  for i in pwd: dic[i] += 1
+  n = int(stdin.readline())
+  for _ in range(n):
+    ans = stdin.readline().split()
+    a, b, c, d = 0, 0, pwd[:], dic.copy()
+
+    for j in range(4):
+      if ans[j] == pwd[j]:
+        d[str(pwd[j])] -= 1
+        a = a + 1
+        c[j] = 'o1'
+        ans[j] = 'o2'
+    for j in ans:
+      if j in c and d[j]>0:
+        d[j] -= 1
+        b = b + 1
+    output = output + f'{a}A{b}B\n'
+print(output)
