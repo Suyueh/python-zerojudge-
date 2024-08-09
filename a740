@@ -1,0 +1,14 @@
+import sys
+
+lines = sys.stdin.readlines()
+for line in lines:
+    N = int(line)
+    MAX = int(N ** 0.5)
+    ans = 0
+    for i in range(2, MAX+1):
+        while N % i == 0:
+            ans += i
+            N //= i
+    if N != 1:
+        ans += N
+    print(ans)
