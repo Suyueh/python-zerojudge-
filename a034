@@ -1,0 +1,6 @@
+while True:
+  try:
+    s = int(input())
+    print(bin(s)[2::])
+  except:
+    break
