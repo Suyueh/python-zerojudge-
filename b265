@@ -1,0 +1,23 @@
+import itertools      
+while True:
+  try:
+    n = int(input())   
+    if n == 0: break        
+    a = []                
+    for i in range(n):
+      at = input().split()   
+      at.sort()           
+      a.append(''.join(at))   
+    a.sort()                 
+    b = itertools.groupby(a)  
+    c = []                  
+    for key, val in b:
+      c.append(len(list(val)))  
+    m = max(c)             
+    co = c.count(m)
+    if m == 1:
+      print(len(a))    
+    else:
+      print(m*co)
+  except:
+    break
