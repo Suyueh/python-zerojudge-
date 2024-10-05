@@ -1,0 +1,24 @@
+from collections import defaultdict
+
+def find_modes(numbers):
+    freq = defaultdict(int)
+    
+    for num in numbers:
+        freq[num] += 1
+    
+    max_freq = max(freq.values())
+    
+    result = []
+    for num, count in freq.items():
+        if count == max_freq:
+            result.append((num, count))
+    
+    return result
+
+n = int(input())
+numbers = list(map(int, input().split()))
+
+modes = find_modes(numbers)
+
+for mode, count in sorted(modes):
+    print(mode, count)
