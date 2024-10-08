@@ -1,0 +1,21 @@
+while True:
+  try:
+    n = int(input())
+    coin = [int(i) for i in input().split()]
+    mx = int(input())
+    r = []
+    def fn(f):
+      h = len(f)
+      if h == n:
+        if sum([a*b for a, b in zip(f, coin)]) == mx:
+          r.append(f)
+        return
+      for i in range(mx//coin[h]+1): fn(f+[i])
+    fn([])
+    r.sort()
+    for i in r:
+      print('(', end='')
+      print(*i, sep =',', end=')')
+      print()
+  except:
+    break
